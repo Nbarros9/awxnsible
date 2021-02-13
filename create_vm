@@ -1,0 +1,28 @@
+---
+- name: Create a VM 
+  hosts: localhost
+  tasks:
+  - name: Create VM
+    vmware_guest:
+      hostname: 172.180.0.200
+      username: administrator@vsphere.local
+      password: 
+      validate_certs: False
+      name: testvm
+      state: present
+      folder: /vmansible
+      guest_id: guestuser
+      datacenter: DC0
+      datastore: DS1 
+      disk:
+      - size_gb:5
+        type: thin
+      hardware
+       memory_mb: 512
+       num_cups: 2
+      networks: 
+      - name: 'VM Network'
+        mac: 
+        ip: 
+        netmask: 
+      register: deploy
